@@ -56,9 +56,9 @@
 <joint name="joint1" type="revolute">
     <parent link="arm_base"/>
     <child link="link1"/>
-    <origin xyz="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 ${-M_PI/2} ${M_PI}"/>
     <limit effort="300" lower="${-M_PI}" upper="${M_PI/2}" velocity="7.33"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 -1 0"/>
 </joint>
 
 <joint name="joint2" type="revolute">
@@ -66,7 +66,7 @@
     <child link="link2"/>
     <origin xyz="0 0 ${link1_length}" />
     <limit effort="300" lower="${-M_PI}" upper="${M_PI}" velocity="7.33"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="0 -1 0"/>
 </joint>
 
 <joint name="joint3" type="fixed">

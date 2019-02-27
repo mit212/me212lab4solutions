@@ -26,7 +26,7 @@ def select_best_q(candidates, q0, weight = [1,1]):
     return best_q
 
 def ik(target_TCP_xz, q0):
-    x, z = target_TCP_xz[0], target_TCP_xz[1]
+    x,z = target_TCP_xz[0], -target_TCP_xz[1]
     ik_candidate = []
     
     xz2 = x**2 + z**2  ## In Python, x**y: x to the power y
@@ -34,14 +34,14 @@ def ik(target_TCP_xz, q0):
     # candidate 1
     # q_1 and q_2 are in RADIANS
     q_2 = 2*np.arctan(np.sqrt((a1+a2)**2 - xz2)/np.sqrt((xz2 - (a1 - a2)**2)))# ??
-    q_1 = np.arctan2(z,x) - np.arctan2(a2*np.sin(q_2), a1+a2*(np.cos(q_2))) - np.pi/2## ??
+    q_1 = np.arctan2(z,x) - np.arctan2(a2*np.sin(q_2), a1+a2*(np.cos(q_2)))## ??
     
     if not np.isnan([q_1, q_2]).any():
         ik_candidate.append([q_1, q_2])
     
     # candidate 2
     q_2 = -2*np.arctan(np.sqrt((a1+a2)**2 - xz2)/np.sqrt((xz2 - (a1 - a2)**2)))# ??
-    q_1 = np.arctan2(z,x) - np.arctan2(a2*np.sin(q_2), a1+a2*(np.cos(q_2))) - np.pi/2## ??
+    q_1 = np.arctan2(z,x) - np.arctan2(a2*np.sin(q_2), a1+a2*(np.cos(q_2)))## ??
     
     if not np.isnan([q_1, q_2]).any():
         ik_candidate.append([q_1, q_2])
